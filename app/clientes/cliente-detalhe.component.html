@@ -1,0 +1,38 @@
+<div class="container"> 
+<h2>Salvar Cliente</h2>
+<form (ngSubmit) = "onSubmit()" #clienteForm="ngForm" novalidate>
+    <div [ngClass]="getFormGroupClass(nome.valid,nome.pristine)">
+        <label for="nome" class="form-control-label">Nome</label>
+        <input type="text" placeholder="Informe o nome"  
+         [ngClass]="getFormControlClass(nome.valid, nome.pristine)"
+         required
+         #nome="ngModel"
+         name="nome"
+         [(ngModel)]="cliente.nome" >
+         <div class="form-control-feedback" [hidden]="nome.valid || nome.pristine">O campo nome deve ser informado</div>
+    </div>
+    <div [ngClass]="getFormGroupClass(email.valid, email.pristine)">
+        <label for="email">Email</label>
+        <input type="email" class="form-control" placeholder="Informe o email"    
+         [ngClass]="getFormControlClass(email.valid, email.pristine)"     
+         required
+         #email="ngModel"
+         name="email"
+         [(ngModel)]="cliente.email" >
+         <div class="form-control-feedback" [hidden]="email.valid || email.pristine">O campo email deve ser informado</div>
+    </div>
+    <div [ngClass]="getFormGroupClass(telefone.valid,telefone.pristine)">
+        <label for="telefone">Telefone</label>
+        <input type="text" class="form-control" placeholder="Informe o telefone" 
+         [ngClass]="getFormControlClass(telefone.valid, telefone.pristine)"     
+         required
+         #telefone="ngModel"
+         name="telefone"
+         [(ngModel)]="cliente.telefone">
+         <div class="form-control-feedback" [hidden]="telefone.valid || telefone.pristine">O campo telefone deve ser informado</div>
+    </div>
+    <button type="submit" class="btn btn-success" [disabled]="!clienteForm.form.valid">Salvar</button>
+     <a class="btn btn-secondary" routerLink="/">Voltar </a>
+</form>
+
+</div>
